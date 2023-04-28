@@ -1,16 +1,15 @@
-package eu.the42monkeys.eu
+package eu.the42monkeys
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import eu.the42monkeys.eu.databinding.ActivityMainBinding
+import androidx.navigation.findNavController
+import eu.the42monkeys.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,10 +29,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAnchorView(R.id.fab)
-                    .setAction("Action", null).show()
+        binding.fab.setOnClickListener { _ ->
+            navController.navigate(R.id.action_ResolutionsList_to_EditResolution)
         }
     }
 

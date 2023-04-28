@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".EditResolution">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/resolutionTextInput"
+                android:layout_width="299dp"
+                android:layout_height="86dp"
+                android:hint="@string/resolutions"
+                android:inputType="textMultiLine"
+                android:rotationX="0"
+                android:singleLine="false"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/temperRadioGroupLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:text="@string/temper_radio_group_label"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resolutionTextInput" />
+
+            <RadioButton
+                android:id="@+id/radioGoldDaruma"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/daruma_gold_new"
+                android:button="@null"
+                app:layout_constraintEnd_toStartOf="@+id/radioGreenDaruma"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/temperRadioGroupLabel" />
+
+            <TextView
+                android:id="@+id/radioGoldDarumaLabel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_gold_daruma_label"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/radioGreenDarumaLabel"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGoldDaruma" />
+
+            <RadioButton
+                android:id="@+id/radioBlackDaruma"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/daruma_black_new"
+                android:button="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radioGreenDaruma"
+                app:layout_constraintTop_toBottomOf="@+id/temperRadioGroupLabel" />
+
+            <TextView
+                android:id="@+id/radioBlackDarumaLabel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_black_daruma_label"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radioGreenDarumaLabel"
+                app:layout_constraintTop_toBottomOf="@+id/radioBlackDaruma" />
+
+            <RadioButton
+                android:id="@+id/radioGreenDaruma"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/daruma_green_new"
+                android:button="@null"
+                app:layout_constraintEnd_toStartOf="@+id/radioBlackDaruma"
+                app:layout_constraintStart_toEndOf="@+id/radioGoldDaruma"
+                app:layout_constraintTop_toBottomOf="@+id/temperRadioGroupLabel" />
+
+            <TextView
+                android:id="@+id/radioGreenDarumaLabel"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_green_daruma_label"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/radioBlackDarumaLabel"
+                app:layout_constraintStart_toEndOf="@+id/radioGoldDarumaLabel"
+                app:layout_constraintTop_toBottomOf="@+id/radioGreenDaruma" />
+
+            <RadioButton
+                android:id="@+id/radioRedDaruma"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/daruma_red_new"
+                android:button="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGreenDarumaLabel" />
+
+            <TextView
+                android:id="@+id/radioRedDarumaLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/radio_red_daruma_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioRedDaruma" />
+
+            <TextView
+                android:id="@+id/commitmentRadioGroupLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/commitment_radio_group_label"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <RadioGroup
+                android:id="@+id/commitmentRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/commitmentRadioGroupLabel">
+
+                <RadioButton
+                    android:id="@+id/radioLowCommitment"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bell_1"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/radioMediumCommitment"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bell_2"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/radioHighCommitment"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bell_3"
+                    android:button="@null" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/dateLimitLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/date_limit_label"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_resolution"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.517"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateLimitPicker" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioRedDarumaLabel" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/commitmentRadioGroup" />
+
+            <CalendarView
+                android:id="@+id/dateLimitPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateLimitLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

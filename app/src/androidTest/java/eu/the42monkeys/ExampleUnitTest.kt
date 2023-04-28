@@ -1,4 +1,4 @@
-package eu.the42monkeys.eu
+package eu.the42monkeys
 
 import org.junit.Test
 

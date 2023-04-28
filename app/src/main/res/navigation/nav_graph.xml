@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/ResolutionsList">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="eu.the42monkeys.eu.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/EditResolution"
+        android:name="eu.the42monkeys.EditResolution"
+        android:label="@string/edit_resolution_label"
+        tools:layout="@layout/fragment_edit_resolution">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_EditResolution_to_ResolutionsList"
+            app:destination="@id/ResolutionsList" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="eu.the42monkeys.eu.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/ResolutionsList"
+        android:name="eu.the42monkeys.ResolutionsList"
+        android:label="@string/resolutions_list_label"
+        tools:layout="@layout/fragment_resolutions_list">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_ResolutionsList_to_EditResolution"
+            app:destination="@id/EditResolution" />
     </fragment>
 </navigation>
