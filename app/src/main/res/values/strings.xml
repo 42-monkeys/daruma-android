@@ -22,4 +22,5 @@
     <string name="edit_resolution_resolution_text_error">Declare a resolution!</string>
     <string name="edit_resolution_commitment_error">Decide a commitment!</string>
     <string name="edit_resolution_date_limit_error">Decide a date limit!</string>
+    <string name="offer_label">Offer</string>
 </resources>
