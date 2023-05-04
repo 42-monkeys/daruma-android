@@ -11,12 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import eu.the42monkeys.databinding.FragmentEditResolutionBinding
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import java.io.IOException
 import java.util.Calendar
 import java.util.Date
 
@@ -44,30 +38,7 @@ class EditResolution : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val client = OkHttpClient()
-        val request = Request.Builder()
-            .url("http://10.0.2.2:3000/resolutions.json")
-            .header("Content-Type", "application/json")
-            .header(
-                "Authorization",
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjgyOTcwNzY3LCJleHAiOjE2ODQyNjY3NjcsImp0aSI6ImMyMzI0YzJlLWY1Y2EtNDI5ZS1iNjFmLWNkNzRjOWY2Nzk5NyJ9.mZNjXuuLZFHl2L2nyilbvEIeA7qG1TBbhNQr7mP9fLA"
-            )
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                response.use {
-                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
-                    println(response.body!!.string())
-                }
-            }
-        })
-
+        
         binding.resolutionTextInput.doOnTextChanged { text, _, _, _ ->
             vm.mResolutionText.value = text.toString()
         }

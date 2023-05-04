@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "100301755903",
+    "project_id": "daruma-9cbc5",
+    "storage_bucket": "daruma-9cbc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100301755903:android:59c2008d198a10078ac3ca",
+        "android_client_info": {
+          "package_name": "eu.the42monkeys"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100301755903-dik75vbniq8eg0ajit7u3h1cjrpm6rb9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIbEwhLNU-5zRdVi7PAYSVF3og27-0mRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100301755903-dik75vbniq8eg0ajit7u3h1cjrpm6rb9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

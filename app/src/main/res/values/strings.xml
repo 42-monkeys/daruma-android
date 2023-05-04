@@ -23,4 +23,5 @@
     <string name="edit_resolution_commitment_error">Decide a commitment!</string>
     <string name="edit_resolution_date_limit_error">Decide a date limit!</string>
     <string name="offer_label">Offer</string>
+    <string name="default_notification_channel_id">1</string>
 </resources>
