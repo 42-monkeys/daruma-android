@@ -22,6 +22,7 @@
     <string name="edit_resolution_resolution_text_error">Declare a resolution!</string>
     <string name="edit_resolution_commitment_error">Decide a commitment!</string>
     <string name="edit_resolution_date_limit_error">Decide a date limit!</string>
+    <string name="list_resolution_error_server_call">Error from the server</string>
     <string name="offer_label">Offer</string>
     <string name="default_notification_channel_id">1</string>
 </resources>

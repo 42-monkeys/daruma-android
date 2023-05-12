@@ -10,9 +10,14 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.github.kittinunf.fuel.Fuel
 import eu.the42monkeys.databinding.FragmentEditResolutionBinding
 import java.util.Calendar
 import java.util.Date
+import com.github.kittinunf.fuel.core.Response
+import com.github.kittinunf.fuel.gson.responseObject
+import com.github.kittinunf.result.Result
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -38,7 +43,7 @@ class EditResolution : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         binding.resolutionTextInput.doOnTextChanged { text, _, _, _ ->
             vm.mResolutionText.value = text.toString()
         }
