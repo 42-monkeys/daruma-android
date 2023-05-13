@@ -51,11 +51,11 @@ class SignUp : Fragment() {
         binding.signUpButton.setOnClickListener { button ->
             button.isEnabled = false
             // TODO: wait spinner?
-            var email = binding.signUpEmailEditText.text.toString()
-            var password = binding.signUpPasswordEditText.text.toString()
-            var passwordConfirmation = binding.signUpPasswordConfirmEditText.text.toString()
-            var name = binding.signUpNameEditText.text.toString()
-            var language = binding.signUpLanguageSpinner.selectedItem
+            val email = binding.signUpEmailEditText.text.toString()
+            val password = binding.signUpPasswordEditText.text.toString()
+            val passwordConfirmation = binding.signUpPasswordConfirmEditText.text.toString()
+            val name = binding.signUpNameEditText.text.toString()
+            val language = binding.signUpLanguageSpinner.selectedItem
 
             val tz = TimeZone.getDefault()
             val timeZone = tz.id

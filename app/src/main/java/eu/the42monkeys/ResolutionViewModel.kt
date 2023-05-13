@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModel
 import java.util.Date
 
 class ResolutionViewModel : ViewModel() {
-    enum class TemperType {
-        MOTIVATIONAL, SARCASTIC, AUTHORITARIAN, RANDOM
+    enum class TemperType(val type: String) {
+        MOTIVATIONAL("motivational"), SARCASTIC("sarcastic"), AUTHORITARIAN("authoritarian"), RANDOM("random")
     }
 
-    enum class CommitmentType {
-        LOW, MEDIUM, HIGH
+    enum class CommitmentType(val type: String) {
+        LOW("low"), MODERATE("moderate"), HIGH("high")
     }
 
     val mResolutionText = MutableLiveData<String>()

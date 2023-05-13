@@ -47,7 +47,7 @@
 
         <action
             android:id="@+id/action_EditResolution_to_ResolutionsList"
-            app:destination="@id/EditResolution" />
+            app:destination="@id/ResolutionsList" />
     </fragment>
     <fragment
         android:id="@+id/ResolutionsList"

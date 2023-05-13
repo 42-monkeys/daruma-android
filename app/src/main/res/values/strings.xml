@@ -33,4 +33,5 @@
     <string name="sign_up_label">Sign up</string>
     <string name="name">Name</string>
     <string name="language">Language</string>
+    <string name="add_resolution">Add Resolution</string>
 </resources>

@@ -22,8 +22,8 @@ class SignIn : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
@@ -37,8 +37,8 @@ class SignIn : Fragment() {
         binding.signInButton.setOnClickListener { button ->
             button.isEnabled = false
             // TODO: wait spinner?
-            var email = binding.signInEmailEditText.text
-            var password = binding.signInPasswordEditText.text
+            val email = binding.signInEmailEditText.text
+            val password = binding.signInPasswordEditText.text
 
             val requestBody = "{\"user\":{\"email\":\"$email\",\"password\":\"$password\"}}"
 
@@ -48,8 +48,29 @@ class SignIn : Fragment() {
                 .response { _, response, result ->
                     when (result) {
                         is Result.Success -> {
-                            var bearerToken = response["Authorization"].first()
-                            SharedPrefsHelper.saveJwtToken(requireActivity().applicationContext, bearerToken)
+                            val bearerToken = response["Authorization"].first()
+                            SharedPrefsHelper.saveJwtToken(
+                                requireActivity().applicationContext,
+                                bearerToken
+                            )
+
+                            val notificationToken =
+                                SharedPrefsHelper.getNotificationToken(requireActivity().applicationContext)
+                            if (notificationToken != null) {
+                                Fuel.post("${BuildConfig.BACKEND_URL}/devices.json")
+                                    .header("Authorization", bearerToken)
+                                    .header("Content-Type" to "application/json")
+                                    .body("{\"token\":\"$notificationToken\",\"platform\":\"android\"}", Charset.forName("UTF-8"))
+                                    .response { _, _, res ->
+                                        when (res) {
+                                            is Result.Success -> {
+                                            }
+                                            is Result.Failure -> {
+                                            }
+                                        }
+                                    }
+                            }
+
                             findNavController().navigate(R.id.action_SignIn_to_ResolutionsList)
                         }
 

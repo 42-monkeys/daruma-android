@@ -1,6 +1,8 @@
 package eu.the42monkeys
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,7 @@ class Initial : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val waitHandler = Handler(Looper.myLooper()!!)
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -28,13 +31,14 @@ class Initial : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO: add timer of 2 secs and clear backstack?
-        var jwtToken = SharedPrefsHelper.getJwtToken(requireActivity())
-        if(jwtToken == null) {
-            findNavController().navigate(R.id.action_Initial_to_SignIn)
-            return
-        }
-        findNavController().navigate(R.id.action_Initial_to_ResolutionsList)
+        waitHandler.postDelayed(Runnable {
+            var jwtToken = SharedPrefsHelper.getJwtToken(requireActivity())
+            if(jwtToken == null) {
+                findNavController().navigate(R.id.action_Initial_to_SignIn)
+                return@Runnable
+            }
+            findNavController().navigate(R.id.action_Initial_to_ResolutionsList)
+        },1500)
     }
 
     override fun onDestroyView() {

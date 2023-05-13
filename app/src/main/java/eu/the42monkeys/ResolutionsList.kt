@@ -31,7 +31,7 @@ class ResolutionsList : Fragment() {
             savedInstanceState: Bundle?
     ): View {
 
-        var jwtToken = SharedPrefsHelper.getJwtToken(requireActivity().applicationContext)
+        val jwtToken = SharedPrefsHelper.getJwtToken(requireActivity().applicationContext)
         if (jwtToken != null) {
             Fuel.get("${BuildConfig.BACKEND_URL}/resolutions.json")
                 .header("Authorization", jwtToken)
@@ -69,6 +69,9 @@ class ResolutionsList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.addResolution.setOnClickListener { _ ->
+            findNavController().navigate(R.id.action_ResolutionsList_to_EditResolution)
+        }
     }
 
     override fun onDestroyView() {
