@@ -17,6 +17,8 @@ import java.util.Date
 import com.github.kittinunf.fuel.core.Response
 import com.github.kittinunf.fuel.gson.responseObject
 import com.github.kittinunf.result.Result
+import eu.the42monkeys.model.Resolution
+import java.nio.charset.Charset
 
 
 /**
@@ -34,7 +36,7 @@ class EditResolution : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentEditResolutionBinding.inflate(inflater, container, false)
         return binding.root

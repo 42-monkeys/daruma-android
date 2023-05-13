@@ -31,25 +31,31 @@ class ResolutionsList : Fragment() {
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        Fuel.get("${BuildConfig.BACKEND_URL}/resolutions.json").responseObject(Resolution.Deserializer()) { _, _, result ->
-            when (result) {
-                is Result.Success -> {
-                    val resolutions = result.component1()
-                    adapter.setData(resolutions!!)
+        var jwtToken = SharedPrefsHelper.getJwtToken(requireActivity().applicationContext)
+        if (jwtToken != null) {
+            Fuel.get("${BuildConfig.BACKEND_URL}/resolutions.json")
+                .header("Authorization", jwtToken)
+                .responseObject(Resolution.Deserializer()) { _, _, result ->
+                    when (result) {
+                        is Result.Success -> {
+                            val resolutions = result.component1()
+                            adapter.setData(resolutions!!)
 
+                        }
+
+                        is Result.Failure -> {
+                            val exception = result.getException()
+                            Toast.makeText(
+                                activity,
+                                "${R.string.list_resolution_error_server_call}: $exception",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
+                    }
                 }
-                is Result.Failure -> {
-                    val exception = result.getException()
-                    Toast.makeText(
-                        activity,
-                        "${R.string.list_resolution_error_server_call}: $exception",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                }
-            }
         }
 
         _binding = FragmentResolutionsListBinding.inflate(inflater, container, false)

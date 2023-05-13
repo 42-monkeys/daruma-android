@@ -1,6 +1,7 @@
 package eu.the42monkeys
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.ui.AppBarConfiguration
@@ -8,8 +9,13 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.navigation.findNavController
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.result.Result
 import eu.the42monkeys.databinding.ActivityMainBinding
+import eu.the42monkeys.model.Resolution
+import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +38,32 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener { _ ->
             navController.navigate(R.id.action_ResolutionsList_to_EditResolution)
         }
+
+        val requestBody = "{\"user\":{\"email\":\"lorenzo.farnararo@gmail.com\",\"password\":\"password\"}}"
+
+        Fuel.post("${BuildConfig.BACKEND_URL}/users/sign_in.json")
+            .header("Content-Type" to "application/json")
+            .body(requestBody, Charset.forName("UTF-8"))
+            .response { _, response, result ->
+                when (result) {
+                    is Result.Success -> {
+                        var bearerToken = response["Authorization"].first()
+                        SharedPrefsHelper.saveJwtToken(this.applicationContext, bearerToken)
+                        Log.d("","")
+                    }
+
+                    is Result.Failure -> {
+                        val exception = result.getException()
+                        Toast.makeText(
+                            this,
+                            "${R.string.list_resolution_error_server_call}: $exception",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
+                }
+            }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
