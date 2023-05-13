@@ -7,8 +7,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
+import android.widget.Toast
 import androidx.navigation.findNavController
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.result.Result
 import eu.the42monkeys.databinding.ActivityMainBinding
+import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +30,34 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Send device id to server
+        val token = SharedPrefsHelper.getNotificationToken(applicationContext)
+        val requestBody = "{\"token\":\"$token\",\"platform\":\"android\"}"
+        val jwtToken = SharedPrefsHelper.getJwtToken(applicationContext)
+
+        if (jwtToken != null) {
+            Fuel.post("${BuildConfig.BACKEND_URL}/devices.json")
+                .header("Authorization", jwtToken)
+                .header("Content-Type" to "application/json")
+                .body(requestBody, Charset.forName("UTF-8"))
+                .response { _, _, result ->
+                    when (result) {
+                        is Result.Success -> {
+                        }
+
+                        is Result.Failure -> {
+                            val exception = result.getException()
+                            Toast.makeText(
+                                this,
+                                "Send token to server error $exception",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        }
+                    }
+                }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

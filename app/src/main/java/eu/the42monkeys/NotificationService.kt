@@ -43,28 +43,30 @@ class NotificationService : FirebaseMessagingService() {
     private fun sendRegistrationToServer(token: String) {
         SharedPrefsHelper.saveNotificationToken(applicationContext, token)
         val requestBody = "{\"token\":\"$token\",\"platform\":\"android\"}"
-        var jwtToken = SharedPrefsHelper.getJwtToken(applicationContext)
+        val jwtToken = SharedPrefsHelper.getJwtToken(applicationContext)
 
-        Fuel.post("${BuildConfig.BACKEND_URL}/devices.json")
-            .header("Authorization", jwtToken!!)
-            .header("Content-Type" to "application/json")
-            .body(requestBody, Charset.forName("UTF-8"))
-            .response { _, _, result ->
-                when (result) {
-                    is Result.Success -> {
-                    }
+        if (jwtToken != null) {
+            Fuel.post("${BuildConfig.BACKEND_URL}/devices.json")
+                .header("Authorization", jwtToken)
+                .header("Content-Type" to "application/json")
+                .body(requestBody, Charset.forName("UTF-8"))
+                .response { _, _, result ->
+                    when (result) {
+                        is Result.Success -> {
+                        }
 
-                    is Result.Failure -> {
-                        val exception = result.getException()
-                        Toast.makeText(
-                            this,
-                            "Send token to server error $exception",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        is Result.Failure -> {
+                            val exception = result.getException()
+                            Toast.makeText(
+                                this,
+                                "Send token to server error $exception",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
+                        }
                     }
                 }
-            }
+        }
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
