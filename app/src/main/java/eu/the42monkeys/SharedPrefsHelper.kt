@@ -11,7 +11,7 @@ object SharedPrefsHelper {
     private fun getPrefs(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     }
-    fun saveJwtToken(context: Context, token: String) {
+    fun saveJwtToken(context: Context, token: String?) {
         val editor = getPrefs(context).edit()
         editor.putString(KEY_JWT_TOKEN, token)
         editor.apply()

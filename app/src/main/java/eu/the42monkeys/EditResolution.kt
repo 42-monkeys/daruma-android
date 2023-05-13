@@ -21,9 +21,6 @@ import eu.the42monkeys.model.Resolution
 import java.nio.charset.Charset
 
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class EditResolution : Fragment() {
 
     private var _binding: FragmentEditResolutionBinding? = null

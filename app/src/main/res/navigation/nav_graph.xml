@@ -3,8 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ResolutionsList">
+    app:startDestination="@id/Initial">
 
+    <fragment
+        android:id="@+id/Initial"
+        android:name="eu.the42monkeys.Initial"
+        tools:layout="@layout/fragment_initial">
+        <action
+            android:id="@+id/action_Initial_to_SignIn"
+            app:destination="@id/SignIn" />
+        <action
+            android:id="@+id/action_Initial_to_ResolutionsList"
+            app:destination="@id/ResolutionsList" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SignIn"
+        android:name="eu.the42monkeys.SignIn"
+        android:label="@string/sign_in_label"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_SignIn_to_ResolutionsList"
+            app:destination="@id/ResolutionsList" />
+
+        <action
+            android:id="@+id/action_SignIn_to_SignUp"
+            app:destination="@id/SignUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/SignUp"
+        android:name="eu.the42monkeys.SignUp"
+        android:label="@string/sign_up_label"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_SignUp_to_SignIn"
+            app:destination="@id/SignIn" />
+    </fragment>
     <fragment
         android:id="@+id/EditResolution"
         android:name="eu.the42monkeys.EditResolution"
@@ -13,7 +47,7 @@
 
         <action
             android:id="@+id/action_EditResolution_to_ResolutionsList"
-            app:destination="@id/ResolutionsList" />
+            app:destination="@id/EditResolution" />
     </fragment>
     <fragment
         android:id="@+id/ResolutionsList"
@@ -24,5 +58,8 @@
         <action
             android:id="@+id/action_ResolutionsList_to_EditResolution"
             app:destination="@id/EditResolution" />
+        <action
+            android:id="@+id/action_ResolutionsList_to_SignIn"
+            app:destination="@id/SignIn" />
     </fragment>
 </navigation>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kittinunf.fuel.Fuel
@@ -15,9 +16,6 @@ import com.github.kittinunf.result.Result
 import eu.the42monkeys.databinding.FragmentResolutionsListBinding
 import eu.the42monkeys.model.Resolution
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class ResolutionsList : Fragment() {
 
     private var _binding: FragmentResolutionsListBinding? = null
@@ -52,7 +50,8 @@ class ResolutionsList : Fragment() {
                                 "${R.string.list_resolution_error_server_call}: $exception",
                                 Toast.LENGTH_SHORT
                             ).show()
-
+                            SharedPrefsHelper.saveJwtToken(requireActivity().applicationContext, null)
+                            findNavController().navigate(R.id.action_ResolutionsList_to_SignIn)
                         }
                     }
                 }
