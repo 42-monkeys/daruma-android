@@ -30,9 +30,10 @@ android {
         }
         release {
             debuggable false
-            minifyEnabled true
+            minifyEnabled false
             buildConfigField "String", "BACKEND_URL", "\"" + "https://daruma.42monkeys.eu" + "\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {

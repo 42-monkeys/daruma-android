@@ -91,7 +91,7 @@ class EditResolution : Fragment() {
             }
         }
 
-        binding.dateLimitPicker.setOnDateChangeListener { view, year, month, dayOfMonth ->
+        binding.dateLimitPicker.setOnDateChangeListener { _, year, month, dayOfMonth ->
             vm.mDateLimit.value = Date(year, month, dayOfMonth)
         }
 

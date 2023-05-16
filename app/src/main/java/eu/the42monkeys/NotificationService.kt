@@ -74,8 +74,8 @@ class NotificationService : FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         Log.i("NotificationService ", "Message :: $message")
-        val temper = message?.data?.get("temper")!!
-        val body = message?.data?.get("message")!!
+        val temper = message.data["temper"]!!
+        val body = message.data["message"]!!
 
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("temper", temper)
@@ -126,7 +126,7 @@ class NotificationService : FirebaseMessagingService() {
         val notificationBuilder = NotificationCompat.Builder(this, DEFAULT_CHANNEL_ID)
             .setSmallIcon(smallIcon)
             .setLargeIcon(largeIcon)
-            .setContentTitle(message?.data?.get("title"))
+            .setContentTitle(message.data["title"])
             .setContentText(body)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)

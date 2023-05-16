@@ -9,7 +9,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.widget.Toast
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.result.Result
 import eu.the42monkeys.databinding.ActivityMainBinding
@@ -73,7 +72,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val jwtToken = SharedPrefsHelper.getJwtToken(this) ?: return false
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
