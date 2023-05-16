@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_Initial_to_ResolutionsList"
             app:destination="@id/ResolutionsList" />
+        <action
+            android:id="@+id/action_Initial_to_Reminder"
+            app:destination="@id/Reminder" />
     </fragment>
 
     <fragment
@@ -61,5 +64,36 @@
         <action
             android:id="@+id/action_ResolutionsList_to_SignIn"
             app:destination="@id/SignIn" />
+        <action
+            android:id="@+id/action_ResolutionsList_to_RemindersList"
+            app:destination="@id/RemindersList" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RemindersList"
+        android:name="eu.the42monkeys.ReminderList"
+        android:label="@string/reminders_list_label"
+        tools:layout="@layout/fragment_reminders_list">
+
+        <action
+            android:id="@+id/action_RemindersList_to_ResolutionsList"
+            app:destination="@id/ResolutionsList" />
+        <action
+            android:id="@+id/action_RemindersList_to_Reminder"
+            app:destination="@id/Reminder" />
+        <action
+            android:id="@+id/action_RemindersList_to_SignIn"
+            app:destination="@id/SignIn" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Reminder"
+        android:name="eu.the42monkeys.Reminder"
+        android:label="@string/reminder_label"
+        tools:layout="@layout/fragment_reminder">
+
+        <action
+            android:id="@+id/action_Reminder_to_RemindersList"
+            app:destination="@id/RemindersList" />
     </fragment>
 </navigation>

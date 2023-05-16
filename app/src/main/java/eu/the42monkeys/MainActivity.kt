@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.result.Result
 import eu.the42monkeys.databinding.ActivityMainBinding
@@ -57,6 +58,17 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
+        }
+
+        // if coming from notification
+        val temper = intent.getStringExtra("temper")
+        val body = intent.getStringExtra("body")
+
+        if (temper != null && body != null) {
+            val bundle = Bundle()
+            bundle.putString("body", body)
+            bundle.putString("temper", temper)
+            navController.navigate(R.id.action_Initial_to_Reminder, bundle)
         }
     }
 

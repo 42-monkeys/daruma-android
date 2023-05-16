@@ -34,4 +34,6 @@
     <string name="name">Name</string>
     <string name="language">Language</string>
     <string name="add_resolution">Add Resolution</string>
+    <string name="reminders_list_label">Reminders</string>
+    <string name="reminder_label">Reminder</string>
 </resources>

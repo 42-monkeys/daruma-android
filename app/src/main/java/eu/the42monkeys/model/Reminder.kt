@@ -6,9 +6,8 @@ import com.google.gson.Gson
 data class Reminder(
     var id: Int,
     var body: String,
-    var created_at: String,
-    var updated_at: String,
-    var url: String
+    var temper: String,
+    var created_at_formatted: String,
 ) {
 
     class Deserializer : ResponseDeserializable<Array<Reminder>> {

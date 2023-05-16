@@ -6,10 +6,12 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.RingtoneManager
 import android.os.Build
+import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
@@ -72,8 +74,12 @@ class NotificationService : FirebaseMessagingService() {
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         Log.i("NotificationService ", "Message :: $message")
+        val temper = message?.data?.get("temper")!!
+        val body = message?.data?.get("message")!!
 
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("temper", temper)
+        intent.putExtra("body", body)
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationID = Random.nextInt(3000)
 
@@ -87,16 +93,41 @@ class NotificationService : FirebaseMessagingService() {
             PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val largeIcon = BitmapFactory.decodeResource(
+        var largeIcon = BitmapFactory.decodeResource(
             resources,
-            R.mipmap.ic_launcher
+            R.drawable.daruma_red
         )
+        var smallIcon = R.drawable.daruma_red
+        when (ResolutionViewModel.TemperType.valueOf(temper.uppercase())) {
+            ResolutionViewModel.TemperType.AUTHORITARIAN -> {
+                largeIcon = BitmapFactory.decodeResource(
+                    resources,
+                    R.drawable.daruma_black
+                )
+                smallIcon = R.drawable.daruma_black
+            }
+            ResolutionViewModel.TemperType.SARCASTIC -> {
+                largeIcon = BitmapFactory.decodeResource(
+                    resources,
+                    R.drawable.daruma_green
+                )
+                smallIcon = R.drawable.daruma_green
+            }
+            ResolutionViewModel.TemperType.MOTIVATIONAL -> {
+                largeIcon = BitmapFactory.decodeResource(
+                    resources,
+                    R.drawable.daruma_gold
+                )
+                smallIcon = R.drawable.daruma_gold
+            }
+            else -> {}
+        }
 
         val notificationBuilder = NotificationCompat.Builder(this, DEFAULT_CHANNEL_ID)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(smallIcon)
             .setLargeIcon(largeIcon)
             .setContentTitle(message?.data?.get("title"))
-            .setContentText(message?.data?.get("message"))
+            .setContentText(body)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
 

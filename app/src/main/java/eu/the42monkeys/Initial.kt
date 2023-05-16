@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import eu.the42monkeys.databinding.FragmentInitialBinding
+import java.lang.Exception
 
 class Initial : Fragment() {
 
@@ -20,8 +21,8 @@ class Initial : Fragment() {
     private val waitHandler = Handler(Looper.myLooper()!!)
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         _binding = FragmentInitialBinding.inflate(inflater, container, false)
@@ -32,13 +33,17 @@ class Initial : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         waitHandler.postDelayed(Runnable {
-            var jwtToken = SharedPrefsHelper.getJwtToken(requireActivity())
-            if(jwtToken == null) {
-                findNavController().navigate(R.id.action_Initial_to_SignIn)
-                return@Runnable
+            val jwtToken = SharedPrefsHelper.getJwtToken(requireActivity())
+            try {
+                if (jwtToken == null) {
+                    findNavController().navigate(R.id.action_Initial_to_SignIn)
+                    return@Runnable
+                }
+                findNavController().navigate(R.id.action_Initial_to_ResolutionsList)
+            } catch (e: Exception) {
+                // silent catch bubbu
             }
-            findNavController().navigate(R.id.action_Initial_to_ResolutionsList)
-        },1500)
+        }, 1500)
     }
 
     override fun onDestroyView() {
