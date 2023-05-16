@@ -16,4 +16,6 @@
 .cxx
 local.properties
 
+/app/release
+
 key.jks
