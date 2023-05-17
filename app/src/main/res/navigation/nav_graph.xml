@@ -5,6 +5,10 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/Initial">
 
+    <action
+        android:id="@+id/go_to_ResolutionList"
+        app:destination="@id/ResolutionsList" />
+
     <fragment
         android:id="@+id/Initial"
         android:name="eu.the42monkeys.Initial"

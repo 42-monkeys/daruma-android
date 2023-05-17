@@ -8,14 +8,9 @@ import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.github.kittinunf.fuel.Fuel
 import eu.the42monkeys.databinding.FragmentEditResolutionBinding
 import java.util.Calendar
 import java.util.Date
-import com.github.kittinunf.result.Result
-import java.nio.charset.Charset
-import java.text.SimpleDateFormat
 
 
 class EditResolution : Fragment() {
@@ -102,38 +97,18 @@ class EditResolution : Fragment() {
             if (!isValid) {
                 button.isEnabled = true
             }
-            val formattedDate = SimpleDateFormat("dd-MM-yyyy").format(vm.mDateLimit.value!!)
-            val requestBody = "{" +
-                    "\"body\":\"${vm.mResolutionText.value}\"," +
-                    "\"time_limit\":\"${formattedDate}\"," +
-                    "\"commitment\":\"${vm.mCommitment.value!!.type}\"," +
-                    "\"temper\":\"${vm.mTemper.value!!.type}\"," +
-                    "\"offer\":\"${vm.mOffer.value}\"" +
-                    "}"
+            val activity = (activity as MainActivity)
+            activity.pendingResolution = vm
 
-            val jwtToken = SharedPrefsHelper.getJwtToken(requireActivity().applicationContext)
+            // payment
+            if (vm.mOffer.value!! > 0) {
+                activity.getPayment()
+                button.isEnabled = true
+                return@setOnClickListener
+            }
 
-            Fuel.post("${BuildConfig.BACKEND_URL}/resolutions.json")
-                .header("Content-Type" to "application/json")
-                .header("Authorization", jwtToken!!)
-                .body(requestBody, Charset.forName("UTF-8"))
-                .response { _, _, result ->
-                    when (result) {
-                        is Result.Success -> {
-                            findNavController().navigate(R.id.action_EditResolution_to_ResolutionsList)
-                        }
-
-                        is Result.Failure -> {
-                            Toast.makeText(
-                                requireActivity(),
-                                "Server Error!",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                        }
-                    }
-                    button.isEnabled = true
-                }
+            activity.saveResolution()
+            button.isEnabled = true
         }
     }
 

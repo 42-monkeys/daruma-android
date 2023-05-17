@@ -17,7 +17,7 @@ class ResolutionViewModel : ViewModel() {
     val mTemper = MutableLiveData<TemperType>()
     var mCommitment = MutableLiveData<CommitmentType>()
     val mDateLimit = MutableLiveData<Date>()
-    val mOffer = MutableLiveData<Int>()
+    val mOffer = MutableLiveData(0)
 
     override fun toString(): String {
         return "resolution text: ${mResolutionText.value} | " +

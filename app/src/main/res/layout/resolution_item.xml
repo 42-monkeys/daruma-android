@@ -23,6 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Become a rockstar"
+            android:textAlignment="center"
             android:textAppearance="?android:textAppearanceMedium"
             app:layout_constraintBottom_toTopOf="@+id/commitment_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="120 $"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/commitment_image" />

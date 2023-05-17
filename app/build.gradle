@@ -27,11 +27,15 @@ android {
             debuggable true
             minifyEnabled false
             buildConfigField "String", "BACKEND_URL", "\"" + "http://baldarn-x1:3000" + "\""
+            buildConfigField "String", "PAYPAL_CLIENT_KEY" ,  "\"" + "Aegt2kcji6ll8arFrv1jNv93IB75r1gJdVR7GGcMhPpX0ImnouA4XjDOXmZVwDQsXhaHsRg2og4VtWWR" + "\""
+            buildConfigField "String", "PAYPAL_ENV" , "com.paypal.android.sdk.payments.PayPalConfiguration.ENVIRONMENT_SANDBOX"
         }
         release {
             debuggable false
             minifyEnabled false
             buildConfigField "String", "BACKEND_URL", "\"" + "https://daruma.42monkeys.eu" + "\""
+            buildConfigField "String", "PAYPAL_CLIENT_KEY" ,  "\"" + "AQdiCqM2e1HLzowlpM5gaqAqpOE2G1zSnveLu5CYnn8fFCjdg21yVyfhTHjowfNmFow4I8Bv-K9n662g" + "\""
+            buildConfigField "String", "PAYPAL_ENV" , "com.paypal.android.sdk.payments.PayPalConfiguration.ENVIRONMENT_PRODUCTION"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
@@ -52,6 +56,7 @@ android {
 
 dependencies {
 
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.14.2'
     implementation platform('com.google.firebase:firebase-bom:32.0.0')
     implementation 'com.google.firebase:firebase-messaging:23.1.2'
     implementation 'androidx.core:core-ktx:1.10.1'

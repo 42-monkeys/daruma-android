@@ -127,6 +127,9 @@ class ResolutionsList : Fragment() {
                 resolutionText.text = item.body
                 timeLimitText.text = item.time_limit
                 offerText.text = item.offer.toString()
+                if(item.offer == 0) {
+                    offerText.text = ""
+                }
 
                 when (ResolutionViewModel.TemperType.valueOf(item.temper.uppercase())) {
                     ResolutionViewModel.TemperType.AUTHORITARIAN -> darumaImage.setImageResource(R.drawable.daruma_black)
