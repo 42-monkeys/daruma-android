@@ -25,8 +25,8 @@ class EditResolution : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
 
+    ): View {
         _binding = FragmentEditResolutionBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -101,11 +101,10 @@ class EditResolution : Fragment() {
             activity.pendingResolution = vm
 
             // payment
-            if (vm.mOffer.value!! > 0) {
-                activity.getPayment()
-                button.isEnabled = true
-                return@setOnClickListener
-            }
+//            if (vm.mOffer.value!! > 0) {
+//                button.isEnabled = true
+//                return@setOnClickListener
+//            }
 
             activity.saveResolution()
             button.isEnabled = true
