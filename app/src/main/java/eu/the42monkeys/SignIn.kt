@@ -53,24 +53,7 @@ class SignIn : Fragment() {
                                 requireActivity().applicationContext,
                                 bearerToken
                             )
-
-                            val notificationToken =
-                                SharedPrefsHelper.getNotificationToken(requireActivity().applicationContext)
-                            if (notificationToken != null) {
-                                Fuel.post("${BuildConfig.BACKEND_URL}/devices.json")
-                                    .header("Authorization", bearerToken)
-                                    .header("Content-Type" to "application/json")
-                                    .body("{\"token\":\"$notificationToken\",\"platform\":\"android\"}", Charset.forName("UTF-8"))
-                                    .response { _, _, res ->
-                                        when (res) {
-                                            is Result.Success -> {
-                                            }
-                                            is Result.Failure -> {
-                                            }
-                                        }
-                                    }
-                            }
-
+                            (activity as MainActivity).sendDeviceToken()
                             findNavController().navigate(R.id.action_SignIn_to_ResolutionsList)
                         }
 

@@ -36,33 +36,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        // Send device id to server
-        val token = SharedPrefsHelper.getNotificationToken(applicationContext)
-        val requestBody = "{\"token\":\"$token\",\"platform\":\"android\"}"
-        val jwtToken = SharedPrefsHelper.getJwtToken(applicationContext)
-
-        if (jwtToken != null) {
-            Fuel.post("${BuildConfig.BACKEND_URL}/devices.json")
-                .header("Authorization", jwtToken)
-                .header("Content-Type" to "application/json")
-                .body(requestBody, Charset.forName("UTF-8"))
-                .response { _, _, result ->
-                    when (result) {
-                        is Result.Success -> {
-                        }
-
-                        is Result.Failure -> {
-                            val exception = result.getException()
-                            Toast.makeText(
-                                this,
-                                "Send token to server error $exception",
-                                Toast.LENGTH_SHORT
-                            ).show()
-
-                        }
-                    }
-                }
-        }
+        sendDeviceToken()
 
         // if coming from notification
         val temper = intent.getStringExtra("temper")
@@ -85,6 +59,29 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun sendDeviceToken() {
+        val bearerToken = SharedPrefsHelper.getJwtToken(applicationContext)
+        val notificationToken = SharedPrefsHelper.getNotificationToken(applicationContext)
+        if (bearerToken != null && notificationToken != null) {
+            Fuel.post("${BuildConfig.BACKEND_URL}/devices.json")
+                .header("Authorization", bearerToken)
+                .header("Content-Type" to "application/json")
+                .body(
+                    "{\"token\":\"$notificationToken\",\"platform\":\"android\"}",
+                    Charset.forName("UTF-8")
+                )
+                .response { _, _, res ->
+                    when (res) {
+                        is Result.Success -> {
+                        }
+
+                        is Result.Failure -> {
+                        }
+                    }
+                }
+        }
     }
 
     fun saveResolution() {
