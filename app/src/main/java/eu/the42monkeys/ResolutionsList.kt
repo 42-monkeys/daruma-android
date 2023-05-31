@@ -127,20 +127,47 @@ class ResolutionsList : Fragment() {
                 resolutionText.text = item.body
                 timeLimitText.text = item.time_limit
                 offerText.text = item.offer.toString()
-                if(item.offer == 0) {
+                if (item.offer == 0) {
                     offerText.text = ""
                 }
 
                 when (ResolutionViewModel.TemperType.valueOf(item.temper.uppercase())) {
-                    ResolutionViewModel.TemperType.AUTHORITARIAN -> darumaImage.setImageResource(R.drawable.daruma_black)
-                    ResolutionViewModel.TemperType.SARCASTIC -> darumaImage.setImageResource(R.drawable.daruma_green)
-                    ResolutionViewModel.TemperType.MOTIVATIONAL -> darumaImage.setImageResource(R.drawable.daruma_gold)
+                    ResolutionViewModel.TemperType.AUTHORITARIAN -> {
+                        if (item.completed) {
+                            darumaImage.setImageResource(R.drawable.daruma_black_completed)
+                        } else {
+                            darumaImage.setImageResource(R.drawable.daruma_black)
+                        }
+                    }
+
+                    ResolutionViewModel.TemperType.SARCASTIC -> {
+                        if (item.completed) {
+                            darumaImage.setImageResource(R.drawable.daruma_green_completed)
+                        } else {
+                            darumaImage.setImageResource(R.drawable.daruma_green)
+                        }
+                    }
+
+                    ResolutionViewModel.TemperType.MOTIVATIONAL -> {
+                        if (item.completed) {
+                            darumaImage.setImageResource(R.drawable.daruma_gold_completed)
+                        } else {
+                            darumaImage.setImageResource(R.drawable.daruma_gold)
+                        }
+                    }
+
                     else -> {}
                 }
 
                 when (ResolutionViewModel.CommitmentType.valueOf(item.commitment.uppercase())) {
-                    ResolutionViewModel.CommitmentType.MODERATE -> commitmentImage.setImageResource(R.drawable.bell_selected_2)
-                    ResolutionViewModel.CommitmentType.HIGH -> commitmentImage.setImageResource(R.drawable.bell_selected_3)
+                    ResolutionViewModel.CommitmentType.MODERATE -> commitmentImage.setImageResource(
+                        R.drawable.bell_selected_2
+                    )
+
+                    ResolutionViewModel.CommitmentType.HIGH -> commitmentImage.setImageResource(
+                        R.drawable.bell_selected_3
+                    )
+
                     else -> {}
                 }
             }

@@ -12,6 +12,7 @@ data class Resolution(
     var offer: Int,
     var created_at: String,
     var updated_at: String,
+    var completed: Boolean,
     var url: String
 ) {
 
