@@ -1,5 +1,6 @@
 package eu.the42monkeys
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -15,9 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.result.Result
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import eu.the42monkeys.databinding.FragmentResolutionsListBinding
-import eu.the42monkeys.databinding.ResolutionItemBinding
 import eu.the42monkeys.model.Resolution
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class ResolutionsList : Fragment() {
 
@@ -131,9 +135,18 @@ class ResolutionsList : Fragment() {
                     offerText.text = ""
                 }
 
+                val timeLimit = SimpleDateFormat("yyyy-MM-dd").parse(item.time_limit)
+
+                if (item.completed == null && timeLimit!!.before(Date())) {
+                    val completedbutton = itemView.findViewById<FloatingActionButton>(R.id.completed)
+                    val notCompletedButton = itemView.findViewById<FloatingActionButton>(R.id.notCompleted)
+                    completedbutton.visibility = View.VISIBLE
+                    notCompletedButton.visibility = View.VISIBLE
+                }
+
                 when (ResolutionViewModel.TemperType.valueOf(item.temper.uppercase())) {
                     ResolutionViewModel.TemperType.AUTHORITARIAN -> {
-                        if (item.completed) {
+                        if (item.completed == true) {
                             darumaImage.setImageResource(R.drawable.daruma_black_completed)
                         } else {
                             darumaImage.setImageResource(R.drawable.daruma_black)
@@ -141,7 +154,7 @@ class ResolutionsList : Fragment() {
                     }
 
                     ResolutionViewModel.TemperType.SARCASTIC -> {
-                        if (item.completed) {
+                        if (item.completed == true) {
                             darumaImage.setImageResource(R.drawable.daruma_green_completed)
                         } else {
                             darumaImage.setImageResource(R.drawable.daruma_green)
@@ -149,7 +162,7 @@ class ResolutionsList : Fragment() {
                     }
 
                     ResolutionViewModel.TemperType.MOTIVATIONAL -> {
-                        if (item.completed) {
+                        if (item.completed == true) {
                             darumaImage.setImageResource(R.drawable.daruma_gold_completed)
                         } else {
                             darumaImage.setImageResource(R.drawable.daruma_gold)
