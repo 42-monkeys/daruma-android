@@ -138,10 +138,11 @@ class ResolutionsList : Fragment() {
                 val timeLimit = SimpleDateFormat("yyyy-MM-dd").parse(item.time_limit)
 
                 if (item.completed == null && timeLimit!!.before(Date())) {
-                    val completedbutton = itemView.findViewById<FloatingActionButton>(R.id.completed)
-                    val notCompletedButton = itemView.findViewById<FloatingActionButton>(R.id.notCompleted)
-                    completedbutton.visibility = View.VISIBLE
-                    notCompletedButton.visibility = View.VISIBLE
+                    // TODO: completed action
+//                    val completedButton = itemView.findViewById<FloatingActionButton>(R.id.completed)
+//                    val notCompletedButton = itemView.findViewById<FloatingActionButton>(R.id.notCompleted)
+//                    completedButton.visibility = View.VISIBLE
+//                    notCompletedButton.visibility = View.VISIBLE
                 }
 
                 when (ResolutionViewModel.TemperType.valueOf(item.temper.uppercase())) {
