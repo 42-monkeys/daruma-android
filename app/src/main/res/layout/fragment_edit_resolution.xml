@@ -131,6 +131,7 @@
                 android:id="@+id/commitmentRadioGroupLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/commitment_radio_group_label"
                 android:textStyle="bold"
@@ -178,24 +179,13 @@
                 android:id="@+id/dateLimitLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="@string/date_limit_label"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
-            <TextView
-                android:id="@+id/offerLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/offer_label"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <Button
                 android:id="@+id/saveButton"
@@ -219,24 +209,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/radioRedDarumaLabel" />
 
             <View
-                android:id="@+id/divider3"
+                android:id="@+id/divider2"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:layout_marginTop="23dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/commitmentRadioGroup" />
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_marginTop="3dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/offerEditTextNumberDecimal" />
 
             <CalendarView
                 android:id="@+id/dateLimitPicker"
@@ -245,17 +224,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateLimitLabel" />
-
-            <EditText
-                android:id="@+id/offerEditTextNumberDecimal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/offerLabel" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

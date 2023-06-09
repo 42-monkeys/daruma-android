@@ -91,8 +91,7 @@ class MainActivity : AppCompatActivity() {
                 "\"body\":\"${vm.mResolutionText.value}\"," +
                 "\"time_limit\":\"${formattedDate}\"," +
                 "\"commitment\":\"${vm.mCommitment.value!!.type}\"," +
-                "\"temper\":\"${vm.mTemper.value!!.type}\"," +
-                "\"offer\":\"${vm.mOffer.value}\"" +
+                "\"temper\":\"${vm.mTemper.value!!.type}\"" +
                 "}"
 
         val jwtToken = SharedPrefsHelper.getJwtToken(applicationContext)

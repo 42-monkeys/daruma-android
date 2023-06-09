@@ -38,9 +38,6 @@ class EditResolution : Fragment() {
         binding.resolutionTextInput.doOnTextChanged { text, _, _, _ ->
             vm.mResolutionText.value = text.toString()
         }
-        binding.offerEditTextNumberDecimal.doOnTextChanged { text, _, _, _ ->
-            vm.mOffer.value = Integer.parseInt(text.toString())
-        }
 
         binding.dateLimitPicker.minDate = Calendar.getInstance().timeInMillis
         binding.dateLimitPicker.date = vm.mDateLimit.value?.time ?: Date().time
@@ -99,12 +96,6 @@ class EditResolution : Fragment() {
             }
             val activity = (activity as MainActivity)
             activity.pendingResolution = vm
-
-            // payment
-//            if (vm.mOffer.value!! > 0) {
-//                button.isEnabled = true
-//                return@setOnClickListener
-//            }
 
             activity.saveResolution()
             button.isEnabled = true

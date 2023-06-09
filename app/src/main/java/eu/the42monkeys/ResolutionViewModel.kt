@@ -17,13 +17,11 @@ class ResolutionViewModel : ViewModel() {
     val mTemper = MutableLiveData<TemperType>()
     var mCommitment = MutableLiveData<CommitmentType>()
     val mDateLimit = MutableLiveData<Date>()
-    val mOffer = MutableLiveData(0)
 
     override fun toString(): String {
         return "resolution text: ${mResolutionText.value} | " +
                 "temper: ${mTemper.value} | " +
                 "commitment: ${mCommitment.value} | " +
-                "date limit: ${mDateLimit.value} |" +
-                "offer: ${mOffer.value}"
+                "date limit: ${mDateLimit.value}"
     }
 }

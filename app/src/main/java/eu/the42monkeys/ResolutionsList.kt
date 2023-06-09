@@ -1,11 +1,13 @@
 package eu.the42monkeys
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -98,7 +100,7 @@ class ResolutionsList : Fragment() {
                 .inflate(R.layout.resolution_item, parent, false)
 
             navController = Navigation.findNavController(parent)
-            return ViewHolder(view)
+            return ViewHolder(view, parent.context)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -115,7 +117,8 @@ class ResolutionsList : Fragment() {
             notifyDataSetChanged()
         }
 
-        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        inner class ViewHolder(itemView: View, val context: Context) : RecyclerView.ViewHolder(itemView) {
+
             fun bind(item: Resolution) {
                 itemView.setOnClickListener { _ ->
                     val bundle = Bundle()
@@ -124,16 +127,13 @@ class ResolutionsList : Fragment() {
                 }
                 val resolutionText = itemView.findViewById<TextView>(R.id.resolution_text)
                 val darumaImage = itemView.findViewById<ImageView>(R.id.daruma_item_image)
+                darumaImage.startAnimation(AnimationUtils.loadAnimation(context, R.anim.pulse_list))
+
                 val commitmentImage = itemView.findViewById<ImageView>(R.id.commitment_image)
                 val timeLimitText = itemView.findViewById<TextView>(R.id.time_limit_text)
-                val offerText = itemView.findViewById<TextView>(R.id.offer_text)
 
                 resolutionText.text = item.body
                 timeLimitText.text = item.time_limit
-                offerText.text = item.offer.toString()
-                if (item.offer == 0) {
-                    offerText.text = ""
-                }
 
                 val timeLimit = SimpleDateFormat("yyyy-MM-dd").parse(item.time_limit)
 
