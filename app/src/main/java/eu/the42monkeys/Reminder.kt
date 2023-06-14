@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import eu.the42monkeys.databinding.FragmentReminderBinding
+import eu.the42monkeys.model.ResolutionViewModel
 import java.util.Locale
 
 

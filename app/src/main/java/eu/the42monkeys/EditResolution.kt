@@ -9,6 +9,8 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import eu.the42monkeys.databinding.FragmentEditResolutionBinding
+import eu.the42monkeys.model.ResolutionViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
@@ -40,7 +42,6 @@ class EditResolution : Fragment() {
         }
 
         binding.dateLimitPicker.minDate = Calendar.getInstance().timeInMillis
-        binding.dateLimitPicker.date = vm.mDateLimit.value?.time ?: Date().time
 
         binding.radioGoldDaruma.setOnCheckedChangeListener { _, _ ->
             resetTemperRadios()
@@ -84,7 +85,9 @@ class EditResolution : Fragment() {
         }
 
         binding.dateLimitPicker.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            vm.mDateLimit.value = Date(year, month, dayOfMonth)
+            val calendar = Calendar.getInstance()
+            calendar.set(year, month, dayOfMonth)
+            vm.mDateLimit.value = calendar
         }
 
         binding.saveButton.setOnClickListener { button ->
@@ -93,6 +96,7 @@ class EditResolution : Fragment() {
             val isValid = validate()
             if (!isValid) {
                 button.isEnabled = true
+                return@setOnClickListener
             }
             val activity = (activity as MainActivity)
             activity.pendingResolution = vm

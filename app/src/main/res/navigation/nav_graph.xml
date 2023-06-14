@@ -6,8 +6,16 @@
     app:startDestination="@id/Initial">
 
     <action
-        android:id="@+id/go_to_ResolutionList"
+        android:id="@+id/go_to_ResolutionsList"
         app:destination="@id/ResolutionsList" />
+
+    <action
+        android:id="@+id/go_to_EditUser"
+        app:destination="@id/EditUser" />
+
+    <action
+        android:id="@+id/go_to_Initial"
+        app:destination="@id/Initial" />
 
     <fragment
         android:id="@+id/Initial"
@@ -36,6 +44,9 @@
         <action
             android:id="@+id/action_SignIn_to_SignUp"
             app:destination="@id/SignUp" />
+        <action
+            android:id="@+id/action_SignIn_to_ResetPassword"
+            app:destination="@id/ResetPassword" />
     </fragment>
     <fragment
         android:id="@+id/SignUp"
@@ -100,4 +111,13 @@
             android:id="@+id/action_Reminder_to_RemindersList"
             app:destination="@id/RemindersList" />
     </fragment>
+    <fragment
+        android:id="@+id/ResetPassword"
+        android:name="eu.the42monkeys.ResetPassword"
+        android:label="@string/reset_password_label"
+        tools:layout="@layout/fragment_reset_password" />
+    <fragment
+        android:id="@+id/EditUser"
+        android:name="eu.the42monkeys.EditUser"
+        android:label="EditUser" />
 </navigation>

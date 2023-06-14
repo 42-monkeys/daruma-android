@@ -1,7 +1,8 @@
-package eu.the42monkeys
+package eu.the42monkeys.model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.util.Calendar
 import java.util.Date
 
 class ResolutionViewModel : ViewModel() {
@@ -16,7 +17,7 @@ class ResolutionViewModel : ViewModel() {
     val mResolutionText = MutableLiveData<String>()
     val mTemper = MutableLiveData<TemperType>()
     var mCommitment = MutableLiveData<CommitmentType>()
-    val mDateLimit = MutableLiveData<Date>()
+    val mDateLimit = MutableLiveData<Calendar>()
 
     override fun toString(): String {
         return "resolution text: ${mResolutionText.value} | " +

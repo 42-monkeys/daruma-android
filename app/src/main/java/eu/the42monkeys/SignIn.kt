@@ -1,7 +1,6 @@
 package eu.the42monkeys
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -74,6 +73,9 @@ class SignIn : Fragment() {
             findNavController().navigate(R.id.action_SignIn_to_SignUp)
         }
 
+        binding.goToResetPassword.setOnClickListener{ _ ->
+            findNavController().navigate(R.id.action_SignIn_to_ResetPassword)
+        }
     }
 
     override fun onDestroyView() {

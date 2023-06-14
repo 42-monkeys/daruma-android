@@ -16,7 +16,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/resolutionTextInput"
-                android:layout_width="299dp"
+                android:layout_width="0dp"
                 android:layout_height="86dp"
                 android:hint="@string/resolutions"
                 android:inputType="textMultiLine"

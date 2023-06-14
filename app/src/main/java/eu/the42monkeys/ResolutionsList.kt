@@ -1,7 +1,6 @@
 package eu.the42monkeys
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -19,9 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.result.Result
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import eu.the42monkeys.databinding.FragmentResolutionsListBinding
 import eu.the42monkeys.model.Resolution
+import eu.the42monkeys.model.ResolutionViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
 

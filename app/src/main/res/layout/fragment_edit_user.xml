@@ -12,7 +12,7 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/signUpEmailEditText"
+                android:id="@+id/editUserEmailEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -27,7 +27,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/signUpNameEditText"
+                android:id="@+id/editUserNameEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -39,10 +39,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.452"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signUpEmailEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/editUserEmailEditText" />
 
             <Spinner
-                android:id="@+id/signUpLanguageSpinner"
+                android:id="@+id/editUserLanguageSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -53,48 +53,63 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.452"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signUpNameEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/editUserNameEditText" />
 
             <EditText
-                android:id="@+id/signUpPasswordEditText"
+                android:id="@+id/editUserCurrentPasswordEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:ems="10"
-                android:hint="@string/password"
+                android:hint="Current password"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.452"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signUpLanguageSpinner" />
+                app:layout_constraintTop_toBottomOf="@+id/editUserLanguageSpinner" />
 
             <EditText
-                android:id="@+id/signUpPasswordConfirmEditText"
+                android:id="@+id/editUserNewPasswordEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="20dp"
+                android:ems="10"
+                android:hint="fill to change password"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.452"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editUserCurrentPasswordEditText" />
+
+            <EditText
+                android:id="@+id/editUserPasswordConfirmEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:ems="10"
-                android:hint="@string/password"
+                android:hint="change password confirmation"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.452"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signUpPasswordEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/editUserNewPasswordEditText" />
 
             <Button
-                android:id="@+id/signUpButton"
+                android:id="@+id/editUserButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/sign_up"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.465"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signUpPasswordConfirmEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/editUserPasswordConfirmEditText" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

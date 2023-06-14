@@ -12,8 +12,8 @@ android {
         applicationId "eu.the42monkeys"
         minSdk 22
         targetSdk 33
-        versionCode 1
-        versionName "0.0.2"
+        versionCode 3
+        versionName "0.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,10 +26,11 @@ android {
         debug {
             debuggable true
             minifyEnabled false
-            buildConfigField "String", "BACKEND_URL", "\"" + "http://baldarn-x1:3000" + "\""
+//            buildConfigField "String", "BACKEND_URL", "\"" + "http://baldarn-x1:3000" + "\""
+            buildConfigField "String", "BACKEND_URL", "\"" + "https://daruma.42monkeys.eu" + "\""
         }
         release {
-            debuggable true
+            debuggable false
             minifyEnabled false
             buildConfigField "String", "BACKEND_URL", "\"" + "https://daruma.42monkeys.eu" + "\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
